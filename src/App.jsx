@@ -8,8 +8,13 @@
 // // // import StateClass from './components/StateClass';
 // // // function App() {
 
+import { Route, Routes } from "react-router-dom";
 import ClassTimer from "./components/ClassTimer";
 import Ctimer from "./components/Ctimer";
+import FetchProducts from "./components/FetchProducts";
+import Login from "./components/Login";
+import Posts from "./components/Posts";
+import Users from "./components/Requests";
 
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -137,7 +142,12 @@ const App=()=>{
 
   return (
     <>
-    <ClassTimer/>
+    <Routes>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/dashboard" element={<div>Dashboard</div>}/>
+
+    </Routes>
+   
     </>
   )
 
