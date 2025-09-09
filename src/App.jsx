@@ -15,6 +15,11 @@ import FetchProducts from "./components/FetchProducts";
 import Login from "./components/Login";
 import Posts from "./components/Posts";
 import Users from "./components/Requests";
+import UserDashboard from "./Comp/UserDashboard";
+import { UserContext } from "./Comp/UserContext";
+import { useState } from "react";
+import HomePage from "./HomePage";
+import Parent from "./Parent";
 
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -138,16 +143,26 @@ import Users from "./components/Requests";
 // }
 // export default App;
 const App=()=>{
+      
+  const [name,setName]=useState("");
 
 
   return (
     <>
+     <UserContext.Provider value={{name,setName}}>
     <Routes>
+      {/* <Route path="/" element={<UserDashboard/>}/> */}
+     
       <Route path="/login" element={<Login/>}/>
-      <Route path="/dashboard" element={<div>Dashboard</div>}/>
+
+      <Route path="/" element={<Parent/>}>
+
+      <Route path="dashboard" element={<HomePage/>}/>
+      </Route>
 
     </Routes>
    
+   </UserContext.Provider>
     </>
   )
 

@@ -1,7 +1,8 @@
 // import { useState } from "react";
 
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../Comp/UserContext";
 
 // const Login=()=>{
 //     const [username,setUsername]=useState("");
@@ -35,6 +36,8 @@ const Login=()=>{
     const navigate=useNavigate();
     const userRef=useRef();
     const passwordRef=useRef();
+    const {name,setName}=useContext(UserContext);
+
 
 
 const loginHandler=()=>{
@@ -54,7 +57,12 @@ const loginHandler=()=>{
                 return true;
         })
         if(results.length>0)
+        {
+            setName(userRef.current.value);
+            
             navigate("/dashboard");
+        }
+
         else
         {
                 setErrors("Invalid user/password");
